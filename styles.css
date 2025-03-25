@@ -1,0 +1,65 @@
+h1 {
+    text-align: center;
+    font-size: 50px;
+    color: white;
+    background-color: #004d80;
+    width: 100%;
+    box-sizing: border-box;
+    border: 2px solid black;
+    padding: 20px;
+    border-radius: 10px;
+    opacity: 0.9;
+}
+
+.contenedor {
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 30px;
+    background-color: #b3b6b8;
+    margin-top: 60px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    opacity: 0.9;
+}
+
+.agrupador {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+h2{
+    text-align: center;
+    font-size: 24px;
+    color: black;
+    margin-bottom: 20px;
+}
+
+input[type="text"], input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 2px solid #cac9c9;
+    border-radius: 5px;
+}
+
+label {
+    font-size: 18px; 
+    color: black;
+}
+
+body {
+    background-image: url('Fondo Sesion.png');
+    /* Asegúrate de que el nombre y extensión sean correctos */
+    background-size: cover;
+    /* Ajusta la imagen para cubrir todo el fondo */
+    background-position: center;
+    /* Centra la imagen */
+    background-repeat: repeat-y;
+    /* Evita que se repita */
+    height: 100vh;
+    /* Asegura que el body ocupe toda la altura de la pantalla */
+    margin: 0;
+    /* Elimina márgenes para que no haya espacios en blanco */
+}
