@@ -1,0 +1,8 @@
+FastAPI
+uvicorn
+numpy
+scikit-learn
+pandas
+matplotlib
+jinja2
+python-multipart
