@@ -63,3 +63,34 @@ body {
     margin: 0;
     /* Elimina márgenes para que no haya espacios en blanco */
 }
+.seleccion{
+    text-align: center;
+    font-size: 18px;
+    color: black;
+    margin-bottom: 10px;
+}
+.btn {
+    color: #000000;
+}
+
+.boton-azul{
+    background-color: #6699FF;
+    border-radius: 10px;
+    padding: 10px;
+    font-weight: bold;  
+
+}
+.boton-verde{
+    background-color: #0066CC;
+    border-radius: 10px;
+    padding: 10px;
+    font-weight: bold;
+    
+}
+.boton-rojo{
+    background-color: #003366;
+    border-radius: 10px;
+    padding: 10px;
+    font-weight: bold;
+}
+
