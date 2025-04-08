@@ -1,60 +1,27 @@
-from fastapi import FastAPI, Request
-from fastapi.responses import HTMLResponse, FileResponse
-from fastapi.staticfiles import StaticFiles
+from fastapi import FastAPI, Form, HTTPException
+from fastapi.responses import HTMLResponse
 from fastapi.templating import Jinja2Templates
-from pydantic import BaseModel
-from typing import List
-from app.models.linear_regression import LinearRegression
-from app.utils.data_simulation import generate_dataset
-import matplotlib.pyplot as plt
-import numpy as np
-import os
+from fastapi.staticfiles import StaticFiles
 
 app = FastAPI()
+templates = Jinja2Templates(directory="templates")
 
-app.mount("/static", StaticFiles(directory="app/static"), name="static")
-templates = Jinja2Templates(directory="app/templates")
-
-model = LinearRegression()
-
-class PredictRequest(BaseModel):
-    input_data: List[float]
-
-@app.on_event("startup")
-async def startup_event():
-    X, y = generate_dataset()
-    model.fit(X, y)
-    generate_plot(X, y, model)
+app.mount("/static", StaticFiles(directory="static"), name="static")
 
 @app.get("/", response_class=HTMLResponse)
-def read_root(request: Request):
-    return templates.TemplateResponse("index.html", {"request": request})
+async def read_form(request):
+    return templates.TemplateResponse("login.html", {"request": request})
 
-@app.post("/train")
-def train_model():
-    X, y = generate_dataset()
-    model.fit(X, y)
-    generate_plot(X, y, model)
-    return {"message": "Model trained successfully"}
+@app.post("/login")
+async def login(name: str = Form(...), psw: str = Form(...)):
+    # Validación: el nombre de usuario solo puede contener letras mayúsculas y minúsculas
+    if not name.isalpha():
+        raise HTTPException(status_code=400, detail="El nombre de usuario solo puede contener letras mayúsculas y minúsculas.")
 
-@app.post("/predict")
-def predict(request: PredictRequest):
-    input_data = request.input_data
-    prediction = model.predict(input_data)
-    return {"prediction": prediction.tolist()}
+    # Aquí puedes agregar la lógica para verificar si el usuario y la contraseña son correctos
+    # if usuarioExiste(name, psw):
+    #     return {"message": "Inicio de Sesión Completado."}
+    # else:
+    #     raise HTTPException(status_code=401, detail="Usuario o contraseña incorrectos.")
 
-@app.get("/plot")
-def get_plot():
-    return FileResponse("app/static/plot.png")
-
-def generate_plot(X, y, model):
-    plt.scatter(X, y, color='blue', label='Data points')
-    X_line = np.linspace(X.min(), X.max(), 100).reshape(-1, 1)
-    y_line = model.predict(X_line)
-    plt.plot(X_line, y_line, color='red', label='Regression line')
-    plt.xlabel('X')
-    plt.ylabel('y')
-    plt.legend()
-    plt.savefig("app/static/plot.png")
-    plt.close()
-    print("Plot generated and saved as app/static/plot.png")
+    return {"message": "Inicio de Sesión Completado."}
