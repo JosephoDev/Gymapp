@@ -202,3 +202,28 @@ h3{
     background-color: #001a3d;
 }
 
+.opciones {
+    display: flex;
+    gap: 10px;
+}
+
+input[type="radio"] {
+    display: none; /* Oculta los radios originales */
+}
+
+label {
+    padding: 10px 20px;
+    border: 2px solid #007BFF;
+    background-color: white;
+    color: #007BFF;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 16px;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+input[type="radio"]:checked + label {
+    background-color: #007BFF;
+    color: white;
+}
