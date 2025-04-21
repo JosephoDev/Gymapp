@@ -50,7 +50,7 @@ label {
 }
 
 body {
-    background-image: url('Fondo Sesion.png');
+    background-image: url('img/Fondo_Sesion.png');
     /* Asegúrate de que el nombre y extensión sean correctos */
     background-size: cover;
     /* Ajusta la imagen para cubrir todo el fondo */

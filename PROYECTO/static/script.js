@@ -42,6 +42,6 @@ document.addEventListener("DOMContentLoaded", function() {
         });
 
         // Redirigir a la página principal (descomentar si se desea redirigir)
-        window.location.href = 'home.html'; // Cambia esto por la URL de tu página principal
+        window.location.href = '/home'; // Cambia esto por la URL de tu página principal
     });
-});
+}); 
