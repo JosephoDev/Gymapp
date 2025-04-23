@@ -9,7 +9,7 @@ app = FastAPI()
 app.mount("/static", StaticFiles(directory="static"), name="static")
 
 # Configura las plantillas HTML
-templates = Jinja2Templates(directory="templates")  # <-- NOTA: sin "PROYECTO/" si estás ejecutando dentro de PROYECTO
+templates = Jinja2Templates(directory="templates")  
 
 # Ruta de login (inicio)
 @app.get("/", response_class=HTMLResponse)
