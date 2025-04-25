@@ -1,0 +1,234 @@
+header {
+    display: flex;
+    min-height: 100px;
+    background-color: #003366d5;
+    justify-content: space-between;
+    color: aliceblue;
+    align-items: center;
+    padding: 30px;
+    border-radius: 10px;
+    border: #000000 2px solid;
+}
+
+body {
+    font-family: Arial, sans-serif;
+
+    background-image: url('img/Fondo_Sesion.png');
+    /* Asegúrate de que el nombre y extensión sean correctos */
+    background-size: cover;
+    /* Ajusta la imagen para cubrir todo el fondo */
+    background-position: center;
+    /* Centra la imagen */
+    background-repeat: repeat-y;
+    /* Evita que se repita */
+    height: 100vh;
+    /* Asegura que el body ocupe toda la altura de la pantalla */
+    margin: 0;
+    /* Elimina márgenes para que no haya espacios en blanco */
+
+}
+
+a {
+    text-decoration: none;
+    color: aliceblue;
+}
+
+nav a {
+    height: 50px;
+    margin-right: 10px;
+}
+
+a:hover {
+    background-color: #0e2231;
+    border-radius: 3px;
+    padding: 5px;
+}
+
+.alogin {
+    color: black;
+}
+
+.alogin:hover {
+    background-color: #68a7dd;
+    border-radius: 3px;
+    padding: 5px;
+}
+
+.btn-menu {
+    align-items: center;
+    display: flex;
+    width: 0%;
+    max-width: 1200px;
+
+}
+
+.btn-menu, .logo {
+    float: left;
+}
+
+.btn-menu label {
+    color: #fff;
+    font-size: 25px;
+    cursor: pointer;
+}
+
+.btn-menu h1{
+    margin-left: 20px;
+}
+
+
+@media (max-width: 700px) {
+    header {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .btn-menu {
+        justify-content: center;
+        width: 100%;
+     
+    }
+    nav {
+        padding: 10px 0px;
+    }
+}
+
+/*====================================Menu Lateral Desplegable==========================================================================*/
+
+#btn-menu {
+    display: none;
+}
+
+.container-menu {
+    position: absolute;
+    background: #002a5391;
+    width: 100%;
+    height: 100vh;
+    top: 0;
+    transition: all 0.5s ease;
+    opacity: 0;
+    visibility: hidden;
+}
+
+#btn-menu:checked~.container-menu {
+    opacity: 1;
+    visibility: visible;
+}
+
+.cont-menu {
+    width: 100%;
+    max-width: 250px;
+    background-color: #325880;
+    height: 100vh;
+    position: relative;
+    transition: all 0.5s ease;
+    transform: translateX(-100%);
+}
+
+#btn-menu:checked~.container-menu .cont-menu {
+    transform: translateX(0%);
+}
+
+.cont-menu nav {
+    
+    transform: translateY(145px);
+    }
+
+.cont-menu nav a {
+    display: block;
+    text-decoration: none;
+    color: #fff;
+    border-left: 5px solid transparent;
+    transition: all 0.4s ease;
+}
+
+.cont-menu nav a:hover {
+    background: #002a53;
+    border-left: 5px solid #00d4ff;
+    transition: all 0.4s ease;
+}
+.cont-menu label{
+    position: absolute;
+    right: 5px;
+    top: 10px;
+    color: #fff;
+    cursor: pointer;
+    size: 100px;
+}
+
+/*====================================Correcciones por Joseph===========================================================================*/
+
+
+
+.contenedor {
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 30px;
+    background-color: #b3b6b8;
+    margin-top: 60px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    opacity: 0.9;
+}
+
+.agrupador {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+h2 {
+    text-align: center;
+    font-size: 24px;
+    color: black;
+    margin-bottom: 20px;
+}
+
+input[type="text"],
+input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 2px solid #cac9c9;
+    border-radius: 5px;
+}
+
+label {
+    font-size: 18px;
+    color: black;
+}
+
+.seleccion {
+    text-align: center;
+    font-size: 18px;
+    color: black;
+    margin-bottom: 10px;
+}
+
+.btn {
+    color: #000000;
+}
+
+.boton-azul {
+    background-color: #6699FF;
+    border-radius: 10px;
+    padding: 10px;
+    font-weight: bold;
+
+}
+
+.boton-verde {
+    background-color: #0066CC;
+    border-radius: 10px;
+    padding: 10px;
+    font-weight: bold;
+
+}
+
+.boton-rojo {
+    background-color: #003366;
+    border-radius: 10px;
+    padding: 10px;
+    font-weight: bold;
+}

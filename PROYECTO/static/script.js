@@ -41,7 +41,8 @@ document.addEventListener("DOMContentLoaded", function() {
             confirmButtonText: 'Aceptar'
         });
 
-        // Redirigir a la página principal (descomentar si se desea redirigir)
-        window.location.href = 'home.html'; // Cambia esto por la URL de tu página principal
+        setTimeout(() => {
+        window.location.href = '/home';
+        }, 2000); // Cambia esto por la URL de tu página principal
     });
-});
+}); 
