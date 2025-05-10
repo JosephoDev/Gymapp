@@ -39,6 +39,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 }).then(() => {
                     window.location.href = '/login';  // Redirige al login si todo va bien
                 });
+                
             } else {
                 Swal.fire({
                     icon: 'error',
@@ -57,6 +58,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 });
+
 
 document.addEventListener("DOMContentLoaded", function () {
     const form = document.getElementById("login");
@@ -129,12 +131,9 @@ document.addEventListener("DOMContentLoaded", function () {
                 text: 'No se pudo conectar con el servidor.'
             });
         };
-
-        setTimeout(() => {
-            window.location.href = '/home';
-        }, 2000); // Cambia esto por la URL de tu página principal
     });
 });
+
 function calcularIMC() {
     var peso = parseFloat(document.getElementById('peso').value);
     var altura = parseFloat(document.getElementById('altura').value);
