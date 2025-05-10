@@ -31,10 +31,27 @@ async def show_login(request: Request):
 async def show_home(request: Request):
     return templates.TemplateResponse("home.html", {"request": request})
 
+# ✅ Agrega esta ruta
+@app.get("/about", response_class=HTMLResponse)
+async def show_home(request: Request):
+    return templates.TemplateResponse("about.html", {"request": request})
+
+# ✅ Agrega esta ruta
+@app.get("/contact", response_class=HTMLResponse)
+async def show_home(request: Request):
+    return templates.TemplateResponse("contact.html", {"request": request})
+                                      
 @app.get("/IMC", response_class=HTMLResponse)
 async def show_home(request: Request):
     return templates.TemplateResponse("IMC.html", {"request": request})
 
+@app.get("/train", response_class=HTMLResponse)
+async def show_home(request: Request):
+    return templates.TemplateResponse("train.html", {"request": request})
+
+@app.get("/food", response_class=HTMLResponse)
+async def show_home(request: Request):
+    return templates.TemplateResponse("food.html", {"request": request})
 @app.post("/register")
 async def register_user(name: str = Form(...), password: str = Form(...)):
     try:
