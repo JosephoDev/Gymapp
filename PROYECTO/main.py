@@ -20,3 +20,18 @@ async def show_login(request: Request):
 @app.get("/home", response_class=HTMLResponse)
 async def show_home(request: Request):
     return templates.TemplateResponse("home.html", {"request": request})
+
+# ✅ Agrega esta ruta
+@app.get("/who", response_class=HTMLResponse)
+async def show_home(request: Request):
+    return templates.TemplateResponse("quienes_somos.html", {"request": request})
+
+# ✅ Agrega esta ruta
+@app.get("/contact", response_class=HTMLResponse)
+async def show_home(request: Request):
+    return templates.TemplateResponse("contact.html", {"request": request})
+
+# ✅ Agrega esta ruta
+@app.get("/home", response_class=HTMLResponse)
+async def show_home(request: Request):
+    return templates.TemplateResponse("home.html", {"request": request})
