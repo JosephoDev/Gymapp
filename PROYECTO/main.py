@@ -29,7 +29,7 @@ async def show_home(request: Request):
 # ✅ Agrega esta ruta
 @app.get("/contact", response_class=HTMLResponse)
 async def show_home(request: Request):
-    return templates.TemplateResponse("contact.html", {"request": request}
+    return templates.TemplateResponse("contact.html", {"request": request})
                                       
 @app.get("/IMC", response_class=HTMLResponse)
 async def show_home(request: Request):
