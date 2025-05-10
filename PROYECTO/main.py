@@ -22,9 +22,9 @@ async def show_home(request: Request):
     return templates.TemplateResponse("home.html", {"request": request})
 
 # ✅ Agrega esta ruta
-@app.get("/who", response_class=HTMLResponse)
+@app.get("/about", response_class=HTMLResponse)
 async def show_home(request: Request):
-    return templates.TemplateResponse("quienes_somos.html", {"request": request})
+    return templates.TemplateResponse("about.html", {"request": request})
 
 # ✅ Agrega esta ruta
 @app.get("/contact", response_class=HTMLResponse)
