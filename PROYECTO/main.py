@@ -20,3 +20,15 @@ async def show_login(request: Request):
 @app.get("/home", response_class=HTMLResponse)
 async def show_home(request: Request):
     return templates.TemplateResponse("home.html", {"request": request})
+
+@app.get("/IMC", response_class=HTMLResponse)
+async def show_home(request: Request):
+    return templates.TemplateResponse("IMC.html", {"request": request})
+
+@app.get("/train", response_class=HTMLResponse)
+async def show_home(request: Request):
+    return templates.TemplateResponse("train.html", {"request": request})
+
+@app.get("/food", response_class=HTMLResponse)
+async def show_home(request: Request):
+    return templates.TemplateResponse("food.html", {"request": request})
