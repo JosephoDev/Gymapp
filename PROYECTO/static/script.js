@@ -161,22 +161,24 @@ function calcularIMC() {
 }
 
 
-// Función para mostrar el tipo de cuerpo seleccionado
+
 function mostrarTipo(tipo) {
-    // Oculta todos los textos añadiendo la clase hidden
+    
     document.getElementById("texto-ecto").classList.add("hidden");
     document.getElementById("texto-meso").classList.add("hidden");
     document.getElementById("texto-endo").classList.add("hidden");
 
-    // Elimina la clase visible de todos los textos
+    
     document.getElementById("texto-ecto").classList.remove("visible");
     document.getElementById("texto-meso").classList.remove("visible");
     document.getElementById("texto-endo").classList.remove("visible");
 
-    // Muestra el texto correspondiente al tipo seleccionado
+    
     const selectedText = document.getElementById(`texto-${tipo}`);
-    selectedText.classList.remove("hidden"); // Muestra el elemento
+    selectedText.classList.remove("hidden"); 
     setTimeout(() => {
         selectedText.classList.add("visible"); 
     }, 10); 
 }
+
+
