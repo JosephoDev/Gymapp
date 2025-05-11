@@ -39,7 +39,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 }).then(() => {
                     window.location.href = '/login';  // Redirige al login si todo va bien
                 });
-                
+
             } else {
                 Swal.fire({
                     icon: 'error',
@@ -112,6 +112,8 @@ document.addEventListener("DOMContentLoaded", function () {
                     text: result.message
                 });
 
+                localStorage.setItem("username", username); // nombre es el username enviado en el login
+
                 setTimeout(() => {
                     window.location.href = '/home';
                 }, 2000);
@@ -134,6 +136,10 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
+//Definir Variables faltantes
+let imcCalculado = null;
+let tipoSeleccionado = null;
+
 function calcularIMC() {
     var peso = parseFloat(document.getElementById('peso').value);
     var altura = parseFloat(document.getElementById('altura').value);
@@ -144,6 +150,7 @@ function calcularIMC() {
     }
 
     var imc = peso / (altura * altura);
+    imcCalculado = parseFloat(imc.toFixed(2)); // ✅ Redondea a 2 decimales
     var resultadoTexto = "Tu IMC es: " + imc.toFixed(2) + ". ";
 
     if (imc < 18.5) {
@@ -160,25 +167,74 @@ function calcularIMC() {
     document.getElementById('resultado').textContent = resultadoTexto;
 }
 
+// Función para mostrar el tipo de cuerpo seleccionado
+function mostrarTipo(tipoNumero) {
+    // Oculta todos
+    for (let i = 1; i <= 3; i++) {
+        document.getElementById(`texto-${i}`).classList.add("hidden");
+        document.getElementById(`texto-${i}`).classList.remove("visible");
+    }
 
+    // Muestra el seleccionado
+    const selectedText = document.getElementById(`texto-${tipoNumero}`);
+    selectedText.classList.remove("hidden");
 
-function mostrarTipo(tipo) {
-    
-    document.getElementById("texto-ecto").classList.add("hidden");
-    document.getElementById("texto-meso").classList.add("hidden");
-    document.getElementById("texto-endo").classList.add("hidden");
-
-    
-    document.getElementById("texto-ecto").classList.remove("visible");
-    document.getElementById("texto-meso").classList.remove("visible");
-    document.getElementById("texto-endo").classList.remove("visible");
-
-    
-    const selectedText = document.getElementById(`texto-${tipo}`);
-    selectedText.classList.remove("hidden"); 
     setTimeout(() => {
-        selectedText.classList.add("visible"); 
-    }, 10); 
+        selectedText.classList.add("visible");
+    }, 10);
+
+    // Guarda el tipo
+    document.getElementById("tipo").value = tipoNumero;
+    tipoSeleccionado = tipoNumero;
 }
 
+function guardarDatos() {
+    const objetivo = document.querySelector('input[name="objetivo"]:checked');
+    const username = localStorage.getItem("username");
+
+    if (!imcCalculado || !tipoSeleccionado || !objetivo || !username) {
+        Swal.fire({
+            icon: 'error',
+            title: 'Campos incompletos',
+            text: 'Por favor, completa todos los campos.'
+        });
+        return;
+    }
+
+    fetch("/update_user_data", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            username: username,
+            imc: imcCalculado,
+            tipo: tipoSeleccionado,
+            objetivo: parseInt(objetivo.value)
+        })
+    })
+    .then(res => res.json())
+    .then(data => {
+        if (data.message) {
+            Swal.fire({
+                icon: 'success',
+                title: 'Datos guardados',
+                text: data.message
+            });
+        } else {
+            Swal.fire({
+                icon: 'error',
+                title: 'Error al guardar',
+                text: data.error || 'Ocurrió un error inesperado.'
+            });
+        }
+    })
+    .catch(err => {
+        Swal.fire({
+            icon: 'error',
+            title: 'Error de red',
+            text: 'No se pudo conectar con el servidor.'
+        });
+    });
+}
 
