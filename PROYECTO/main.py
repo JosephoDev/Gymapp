@@ -3,7 +3,7 @@ from fastapi.responses import HTMLResponse, JSONResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 from models.connectdb import get_connection
-import pymysql
+import pymysql # type: ignore
 
 app = FastAPI()
 
