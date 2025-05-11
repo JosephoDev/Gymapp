@@ -178,6 +178,7 @@ function mostrarTipo(tipoNumero) {
     // Muestra el seleccionado
     const selectedText = document.getElementById(`texto-${tipoNumero}`);
     selectedText.classList.remove("hidden");
+
     setTimeout(() => {
         selectedText.classList.add("visible");
     }, 10);
